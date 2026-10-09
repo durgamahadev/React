@@ -1,0 +1,93 @@
+/* Layout Headers & Controls */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background-color: #238636;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #2ea44f;
+}
+
+/* Container Grid Layout */
+.users-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Image Wrapper for Absolute Positioning Elements */
+.image-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+/* Avatar Layout Styling */
+.user-avatar {
+  border-radius: 50%;
+  border: 2px solid #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Shared Actions Controls Base Class (Hidden by Default) */
+.action-btn {
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Position Anchors & Colors */
+.delete-btn {
+  top: -2px;
+  right: -2px;
+  background: #ff4d4f;
+  color: white;
+  font-size: 16px;
+}
+
+.edit-btn {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(250, 250, 250, 0.95);
+  font-size: 14px;
+}
+
+/* Dynamic Interaction Hover States */
+.image-container:hover .action-btn {
+  display: flex;
+}
+
+.image-container:hover .user-avatar {
+  transform: scale(1.05);
+  filter: brightness(0.85); /* Slightly darkens image to make pencil pop out */
+}
