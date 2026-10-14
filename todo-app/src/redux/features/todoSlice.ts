@@ -1,13 +1,8 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { Todo } from "../../type";
 import { addTodoReducer, removeTodoReducer } from "./todoReducer";
 
-const initialState: Todo[] = [
-  {
-    id: nanoid(),
-    text: "Hello World",
-  },
-];
+const initialState: Todo[] = [];
 
 const todoSlice = createSlice({
   name: "todo",
