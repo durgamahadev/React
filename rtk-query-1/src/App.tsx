@@ -1,39 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useGetUserQuery } from "./redux/features/api/userApi";
 
 function App() {
   const [perPage, setPerPage] = useState(5);
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetchGitHubUsers();
-  }, [perPage]);
+  const { data: gitHubUsers = [] } = useGetUserQuery(perPage);
 
-  async function fetchGitHubUsers() {
-    try {
-      const response = await fetch(
-        `https://api.github.com/users?per_page=${perPage}`,
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setData(data);
-      console.log("hello");
-    } catch (error) {
-      console.error("Error fetching GitHub user:", error);
-    }
-  }
   console.log("Component rendered");
   return (
     <>
       <section id="center">
         <h1>GitHub Users</h1>
         <input
-          type="number"
+          type="text"
           name="per_page"
           id="per_page"
-          style={{ height: "30px", width: "500px", fontSize: "20px",marginBottom:"10px"
-           }}
+          style={{
+            height: "30px",
+            width: "500px",
+            fontSize: "20px",
+            marginBottom: "10px",
+          }}
           value={perPage}
           onChange={(e) => setPerPage(Number(e.target.value))}
         />
@@ -46,8 +33,8 @@ function App() {
             gap: "10px",
           }}
         >
-          {data.length > 0 ? (
-            data.map((user: any) => (
+          {gitHubUsers?.length > 0 ? (
+            gitHubUsers?.map((user: any) => (
               <img
                 src={user.avatar_url}
                 alt={user.login}
